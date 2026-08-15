@@ -101,27 +101,28 @@ tab:CreateToggle({
    end,
 })
 
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- Brookhaven Auto Name & Bio Color Handler
 task.spawn(function()
-    local playerGui = LocalPlayer:WaitForChild("PlayerGui", 10)
-    if playerGui then
-        -- Cyan RP Name & Pink Bio 
-        local customName = '<font color="#00FFFF">💥ʟᴏʀᴅ_ᴋᴀɪsᴇʀ_ᴠ1💥</font>'
-        local customBio = '<font color="#FF00FF">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ  🤗🔥</font>"
+    local customName = '<font color="#00FFFF">💥ʟᴏʀᴅ_ᴋɪᴀsᴇʀ_ᴠ1💥</font>'
+    local customBio = '<font color="#FF00FF">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ  🤗🔥</font>"
 
-        -- Update Brookhaven RP Name & Bio via Remote Event
-        local RPNameEvent = game:GetService("ReplicatedStorage"):FindFirstChild("RE", true) 
-            and game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPName1")
-            
-        if RPNameEvent then
-            RPNameEvent:FireServer("RolePlayName", customName)
-            RPNameEvent:FireServer("RolePlayBio", customBio)
+    local ReplicatedStorage = game:GetService("ReplicatedStorage")
+    local rpEvent = nil
+
+    for i = 1, 20 do
+        local re = ReplicatedStorage:FindFirstChild("RE")
+        if re then
+            rpEvent = re:FindFirstChild("1RPName1") or re:FindFirstChild("RPName")
+            if rpEvent then break end
         end
+        task.wait(0.5)
+    end
+
+    if rpEvent then
+        rpEvent:FireServer("RolePlayName", customName)
+        rpEvent:FireServer("RolePlayBio", customBio)
     end
 end)
+
 
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
