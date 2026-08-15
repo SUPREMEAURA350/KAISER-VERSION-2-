@@ -1,38 +1,50 @@
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
+local Rayfield = loadstring(game:HttpGet("https://sirius.menu/gen2"))()
 
--- Brookhaven Name & Bio Auto-Updater with Colors
+local window = Rayfield:CreateWindow({
+    name = "KAISER_VERSION1",
+    subtitle = "Created by Lord_Kaiser",
+    Theme = "Dark",
+})
+
+-- Dynamic Red Glow Border Injector
 task.spawn(function()
-    local playerGui = LocalPlayer:WaitForChild("PlayerGui", 10)
-    if playerGui then
-        -- Formatted with Yellow name and Blue bio HTML tags
-        local customName = '<font color="yellow">💥ʟᴏʀᴅ_ᴋᴀɪsᴇʀ_ᴠ1💥</font>'
-        local customBio = '<font color="#00aaff">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ 🤗🔥</font>"
+    task.wait(1)
+    local CoreGui = game:GetService("CoreGui")
+    local RayfieldGui = CoreGui:FindFirstChild("Rayfield") or CoreGui:FindFirstChild("Sirius")
+    
+    if RayfieldGui then
+        local MainFrame = RayfieldGui:FindFirstChild("Main", true) or RayfieldGui:FindFirstChild("MainFrame", true)
+        if MainFrame then
+            -- Glowing Red Outline
+            local Stroke = Instance.new("UIStroke")
+            Stroke.Color = Color3.fromRGB(255, 0, 50) -- Bright Red
+            Stroke.Thickness = 3
+            Stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+            Stroke.Parent = MainFrame
 
-        -- Fire Brookhaven RP Remote Events
-        local RPNameEvent = game:GetService("ReplicatedStorage"):FindFirstChild("RE", true) 
-            and game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPName1")
-            
-        if RPNameEvent then
-            RPNameEvent:FireServer("RolePlayName", customName)
-            RPNameEvent:FireServer("RolePlayBio", customBio)
+            -- Glow Accent Layer
+            local Glow = Instance.new("Frame")
+            Glow.Name = "RedGlowBorder"
+            Glow.Size = UDim2.new(1, 6, 1, 6)
+            Glow.Position = UDim2.new(0, -3, 0, -3)
+            Glow.BackgroundColor3 = Color3.fromRGB(255, 0, 50)
+            Glow.BackgroundTransparency = 0.6
+            Glow.ZIndex = MainFrame.ZIndex - 1
+            Glow.Parent = MainFrame
+
+            local GlowCorner = Instance.new("UICorner")
+            GlowCorner.CornerRadius = UDim.new(0, 10)
+            GlowCorner.Parent = Glow
         end
     end
 end)
 
-local Rayfield = loadstring(game:HttpGet("https://sirius.menu/gen2"))()
-
-local window = Rayfield:CreateWindow({
-    name = "KAISER VERSION1",
-    subtitle = "Kaiser Gen2",
-})
-
 local tab = window:CreateTab({ name = "Main Features", icon = 93364949241311 })
 
 tab:CreateButton({
-    name = "Teleport to Safe Zone",
+    name = "Show Creator User",
     callback = function()
-        window:Notify({ title = "Teleported!", content = "Successfully moved to safe area." })
+        window:Notify({ title = "KING_KAISER", content = "Username: SUPREME_AURA350." })
     end,
 })
 
@@ -62,13 +74,13 @@ tab:CreateToggle({
                local TextChatService = game:GetService("TextChatService")
                local ReplicatedStorage = game:GetService("ReplicatedStorage")
                
-               local target = (_G.TargetPlayer and _G.TargetPlayer ~= "") and _G.TargetPlayer or "KAISER H8RS"
+               local target = (_G.TargetPlayer and _G.TargetPlayer ~= "") and _G.TargetPlayer or "❤️KAISER❤️ H8RS(😝)"
 
                local messages = {
-                   target .. " TMKX MEH DARK POWER POWER VOID WORM WAVE FUN FACT WAVE PRIME PARALLEL PRIME(😋)@@@@@@@@@@@@@@@@@@@@@@@@@",
-                   target .. " TMKX МЕН PARALLEL DARK POWER HYPER POWER WAVE PRIME FUN FACT GODZILLA HYPER(💥)@@@@@@@@@@@@@@@@@@@@@@@@@"
-                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE(😹)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
-                   target .. " TMKX MEH VOID WORM PARALLEL FRAUD WAVE HYPER VOID GODZILLA WAVE WAVE(💀)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
+                   target .. " TMKX MEH DARK POWER KAISER VOID WORM WAVE GOD FACT WAVE PRIME PARALLEL PRIME(🤣)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX МЕН PARALLEL DARK KAISER HYPER POWER WAVE PRIME KAISER FACT GODZILLA HYPER(😹)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX MEH KAISER WORM PARALLEL GOD WAVE HYPER VOID KAISER WAVE WAVE(😝)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@",
+                   target .. " TMKX MEH KAISER WORM PARALLEL LEGEND WAVE HYPER VOID KAISER WAVE POWER(💥)@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
                }
 
                for _, msg in ipairs(messages) do
@@ -88,3 +100,134 @@ tab:CreateToggle({
        end)
    end,
 })
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Brookhaven Auto Name & Bio Color Handler
+task.spawn(function()
+    local playerGui = LocalPlayer:WaitForChild("PlayerGui", 10)
+    if playerGui then
+        -- Cyan RP Name & Pink Bio 
+        local customName = '<font color="#00FFFF">💥ʟᴏʀᴅ_ᴋᴀɪsᴇʀ_ᴠ1💥</font>'
+        local customBio = '<font color="#FF00FF">Welcome ' .. LocalPlayer.Name .. ". ᘜ尺卂几ᗪ Ҝ卂|丂乇尺 ᴏɴ Tᴏᴘ  🤗🔥</font>"
+
+        -- Update Brookhaven RP Name & Bio via Remote Event
+        local RPNameEvent = game:GetService("ReplicatedStorage"):FindFirstChild("RE", true) 
+            and game:GetService("ReplicatedStorage").RE:FindFirstChild("1RPName1")
+            
+        if RPNameEvent then
+            RPNameEvent:FireServer("RolePlayName", customName)
+            RPNameEvent:FireServer("RolePlayBio", customBio)
+        end
+    end
+end)
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+
+-- 1. Intro Screen Overlay (Matches Screenshot Style)
+local function playIntroScreen()
+    local sg = Instance.new("ScreenGui")
+    sg.Name = "LORD_KAISER_V1"
+    sg.ResetOnSpawn = false
+    sg.Parent = (gethui and gethui()) or CoreGui or LocalPlayer:WaitForChild("PlayerGui")
+
+    -- Main Card Container
+    local card = Instance.new("Frame")
+    card.Size = UDim2.new(0, 420, 0, 240)
+    card.Position = UDim2.new(0.5, -210, 0.5, -120)
+    card.BackgroundColor3 = Color3.fromRGB(15, 15, 20)
+    card.BackgroundTransparency = 0.25
+    card.BorderSizePixel = 0
+    card.Parent = sg
+
+    local cardCorner = Instance.new("UICorner")
+    cardCorner.CornerRadius = UDim.new(0, 30)
+    cardCorner.Parent = card
+
+    -- Outer Purple Glow Ring
+    local outerGlow = Instance.new("UIStroke")
+    outerGlow.Color = Color3.fromRGB(160, 32, 240)
+    outerGlow.Thickness = 6
+    outerGlow.Transparency = 0.3
+    outerGlow.Parent = card
+
+    -- Inner Purple Border
+    local innerBorder = Instance.new("UIStroke")
+    innerBorder.Color = Color3.fromRGB(200, 50, 255)
+    innerBorder.Thickness = 2
+    innerBorder.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    innerBorder.Parent = card
+
+    -- Avatar Headshot Image
+    local avatarFrame = Instance.new("Frame")
+    avatarFrame.Size = UDim2.new(0, 80, 0, 80)
+    avatarFrame.Position = UDim2.new(0.5, -40, 0.1, 0)
+    avatarFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    avatarFrame.Parent = card
+
+    local avatarCorner = Instance.new("UICorner")
+    avatarCorner.CornerRadius = UDim.new(1, 0)
+    avatarCorner.Parent = avatarFrame
+
+    local avatarStroke = Instance.new("UIStroke")
+    avatarStroke.Color = Color3.fromRGB(180, 50, 255)
+    avatarStroke.Thickness = 3
+    avatarStroke.Parent = avatarFrame
+
+    local avatarImg = Instance.new("ImageLabel")
+    avatarImg.Size = UDim2.new(1, 0, 1, 0)
+    avatarImg.BackgroundTransparency = 1
+    avatarImg.Image = Players:GetUserThumbnailAsync(LocalPlayer.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size150x150)
+    avatarImg.Parent = avatarFrame
+
+    local imgCorner = Instance.new("UICorner")
+    imgCorner.CornerRadius = UDim.new(1, 0)
+    imgCorner.Parent = avatarImg
+
+    -- Main Title Text
+    local titleText = Instance.new("TextLabel")
+    titleText.Size = UDim2.new(1, 0, 0, 30)
+    titleText.Position = UDim2.new(0, 0, 0.5, 0)
+    titleText.BackgroundTransparency = 1
+    titleText.Text = "KAISER VERSION 1 💬"
+    titleText.TextColor3 = Color3.fromRGB(255, 255, 255)
+    titleText.TextSize = 22
+    titleText.Font = Enum.Font.GothamBold
+    titleText.Parent = card
+
+    -- Subtitle Loading / Welcome Text
+    local statusText = Instance.new("TextLabel")
+    statusText.Size = UDim2.new(1, 0, 0, 25)
+    statusText.Position = UDim2.new(0, 0, 0.72, 0)
+    statusText.BackgroundTransparency = 1
+    statusText.Text = "AUTHENTICATING KAISER..."
+    statusText.TextColor3 = Color3.fromRGB(180, 50, 255)
+    statusText.TextSize = 14
+    statusText.Font = Enum.Font.Code
+    statusText.Parent = card
+
+    -- Animation sequence
+    task.wait(1.5)
+    statusText.Text = "WELCOME, " .. string.upper(LocalPlayer.Name) .. " ⚔️"
+    statusText.TextColor3 = Color3.fromRGB(255, 0, 255)
+    task.wait(1.5)
+
+    -- Fade out
+    local fade = TweenService:Create(card, TweenInfo.new(0.6), {BackgroundTransparency = 1})
+    TweenService:Create(titleText, TweenInfo.new(0.6), {TextTransparency = 1}):Play()
+    TweenService:Create(statusText, TweenInfo.new(0.6), {TextTransparency = 1}):Play()
+    TweenService:Create(avatarImg, TweenInfo.new(0.6), {ImageTransparency = 1}):Play()
+    TweenService:Create(outerGlow, TweenInfo.new(0.6), {Transparency = 1}):Play()
+    TweenService:Create(innerBorder, TweenInfo.new(0.6), {Transparency = 1}):Play()
+    TweenService:Create(avatarStroke, TweenInfo.new(0.6), {Transparency = 1}):Play()
+    fade:Play()
+    fade.Completed:Wait()
+    sg:Destroy()
+end
+
+-- Run Intro First
+playIntroScreen()
